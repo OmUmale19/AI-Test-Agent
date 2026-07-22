@@ -29,7 +29,7 @@ export default function Home() {
         <p style={styles.subtitle}>
           Congratulations! Your customized Next.js boilerplate has been successfully scaffolded with all your selected databases, components, and authentication configurations.
         </p>
-        
+
         <div style={styles.ctaGroup}>
           <a href="https://nextjs.org/docs" target="_blank" rel="noopener noreferrer" style={styles.primaryCta}>
             Read Next.js Docs
@@ -46,7 +46,7 @@ export default function Home() {
           <h3 style={styles.cardTitle}>App Router Ready</h3>
           <p style={styles.cardText}>Built using modern Next.js 15 App Router with full Server Components and safe SEO presets.</p>
         </div>
-        
+
         <div style={styles.card}>
           <div style={styles.icon}>🔒</div>
           <h3 style={styles.cardTitle}>Modular Auth</h3>
