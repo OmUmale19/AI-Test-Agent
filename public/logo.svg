@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 90" width="100%" height="100%">
+  <defs>
+    <linearGradient id="yellow-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#facc15" />
+      <stop offset="100%" stop-color="#eab308" />
+    </linearGradient>
+  </defs>
+
+  <g transform="translate(5, 0)">
+    <!-- Gear Teeth -->
+    <g fill="url(#yellow-grad)">
+      <path d="M 53.54 15.20 L 58.60 3.15 L 74.44 12.30 L 66.53 22.70 Z" />
+      <path d="M 75.08 37.50 L 88.04 35.85 L 88.04 54.15 L 75.08 52.50 Z" />
+      <path d="M 66.53 67.30 L 74.44 77.70 L 58.60 86.85 L 53.54 74.80 Z" />
+      <path d="M 36.46 74.80 L 31.40 86.85 L 15.56 77.70 L 23.47 67.30 Z" />
+      <path d="M 14.92 52.50 L 1.96 54.15 L 1.96 35.85 L 14.92 37.50 Z" />
+      <path d="M 23.47 22.70 L 15.56 12.30 L 31.40 3.15 L 36.46 15.20 Z" />
+    </g>
+
+    <!-- Gear Ring Split into two arcs with diagonal cut gap -->
+    <circle cx="45" cy="45" r="31" fill="none" stroke="url(#yellow-grad)" stroke-width="8" stroke-dasharray="88 12" stroke-dashoffset="14" />
+
+    <!-- Center AT Text -->
+    <text x="44" y="55" font-family="'Arial Black', 'Impact', sans-serif" font-weight="900" font-style="italic" font-size="29" fill="#ffffff" text-anchor="middle" letter-spacing="-1">AT</text>
+
+    <!-- Brand Name Text -->
+    <!-- Line 1: AI TESTING -->
+    <text x="102" y="44" font-family="'Arial Black', 'Montserrat', sans-serif" font-weight="900" font-size="26" fill="#ffffff" letter-spacing="1.5">AI TESTING</text>
+
+    <!-- Line 2: AUTOMATION -->
+    <text x="103" y="66" font-family="'Arial', 'Inter', sans-serif" font-weight="800" font-size="13" fill="#facc15" letter-spacing="5.5">AUTOMATION</text>
+  </g>
+</svg>
