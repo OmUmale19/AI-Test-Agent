@@ -30,7 +30,7 @@ export default function EmptyWorkspace({ onAddRepo }: EmptyWorkspaceProps) {
 
             <button
                 onClick={onAddRepo}
-                className="mt-6 flex items-center gap-2 px-6 py-2.5 rounded-xl font-semibold text-xs md:text-sm bg-gradient-to-r from-sky-400 to-sky-500 hover:from-sky-300 hover:to-sky-400 text-black transition-all duration-200 shadow-lg shadow-sky-500/20 active:scale-95 cursor-pointer"
+                className="mt-6 flex items-center gap-2 px-6 py-2.5 rounded-xl font-semibold text-xs md:text-sm bg-linear-to-r from-sky-400 to-sky-500 hover:from-sky-300 hover:to-sky-400 text-black transition-all duration-200 shadow-lg shadow-sky-500/20 active:scale-95 cursor-pointer"
             >
                 <Image src="/link.png" alt="Add Repo" width={20} height={20} />
                 <span>Connect GitHub Repository</span>

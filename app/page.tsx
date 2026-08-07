@@ -130,7 +130,7 @@ export default function Home() {
 
                 <SignedIn>
                   <Link href="/workspace" className="col-span-2">
-                    <button className="w-full py-3 md:py-3.5 px-4 rounded-xl font-bold text-sm bg-gradient-to-r from-emerald-400 via-sky-400 to-indigo-500 text-black hover:opacity-95 transition-all duration-200 shadow-xl shadow-emerald-500/20 active:scale-[0.98] cursor-pointer flex items-center justify-center gap-2">
+                    <button className="w-full py-3 md:py-3.5 px-4 rounded-xl font-bold text-sm bg-linear-to-r from-emerald-400 via-sky-400 to-indigo-500 text-black hover:opacity-95 transition-all duration-200 shadow-xl shadow-emerald-500/20 active:scale-[0.98] cursor-pointer flex items-center justify-center gap-2">
                       <span>Open Workspace</span>
                       <ArrowRight className="w-4 h-4" />
                     </button>

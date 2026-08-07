@@ -7,7 +7,9 @@ import EmptyWorkspace from './emptyworkspace';
 
 function WorkspaceBody() {
     const { userDetails } = useContext(UserDetailsContext);
-
+    const addRepo = () => {
+        window.location.href = '/api/github';
+    }
     return (
         <div className="max-w-6xl mx-auto mt-6 px-6 md:px-10 pb-12">
             {/* Header row with Title & Credits */}
@@ -27,7 +29,7 @@ function WorkspaceBody() {
                     <span className="text-base font-medium text-zinc-200">Connect Github &amp; Add Repo</span>
                 </div>
 
-                <button className="flex items-center gap-2 border border-zinc-600 hover:border-zinc-400 bg-zinc-800 hover:bg-zinc-700 text-zinc-100 font-medium px-5 py-2 rounded-xl transition-all shadow-sm cursor-pointer active:scale-95">
+                <button onClick={addRepo} className="flex items-center gap-2 border border-zinc-600 hover:border-zinc-400 bg-zinc-800 hover:bg-zinc-700 text-zinc-100 font-medium px-5 py-2 rounded-xl transition-all shadow-sm cursor-pointer active:scale-95">
                     <Plus className="w-4 h-4 text-zinc-300" />
                     <span>Add</span>
                 </button>
@@ -35,7 +37,7 @@ function WorkspaceBody() {
 
             {/* Empty Workspace Section with Margin Spacing & Matching Styles */}
             <div className="mt-6">
-                <EmptyWorkspace />
+                <EmptyWorkspace onAddRepo={addRepo} />
             </div>
         </div>
     )
