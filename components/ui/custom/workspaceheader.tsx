@@ -17,7 +17,7 @@ function Workspaceheader() {
                     <Link href="/workspace">Workspace</Link>
                 </li>
                 <li className="text-base font-semibold text-gray-400 cursor-pointer transition-all duration-300 hover:text-slate-100 hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.6)]">
-                    <Link href="#pricing">Pricing</Link>
+                    <Link href="/pricing">Pricing</Link>
                 </li>
                 <li className="text-base font-semibold text-gray-400 cursor-pointer transition-all duration-300 hover:text-slate-100 hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.6)]">
                     <Link href="#support">Support</Link>

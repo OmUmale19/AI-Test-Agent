@@ -31,7 +31,7 @@ export default function Home() {
 
       {/* Main Container - Non-Scrollable 100vh Viewport Layout */}
       <div className="relative z-10 max-w-6xl w-full mx-auto h-full flex flex-col justify-between overflow-hidden">
-        
+
         {/* Top Header Badge Row */}
         <div className="flex justify-between items-center py-1 px-1 flex-shrink-0">
           <div className="flex items-center gap-3">
@@ -57,16 +57,16 @@ export default function Home() {
 
         {/* Outer Frame Container (Matching Wireframe Border, Translucent for Animation to pass through) */}
         <div className="flex-1 my-2 border border-zinc-800/80 bg-zinc-950/40 backdrop-blur-md rounded-2xl md:rounded-3xl p-4 md:p-6 shadow-2xl shadow-black/80 flex flex-col justify-center overflow-hidden min-h-0">
-          
+
           {/* 2-Column Grid Layout */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-6 items-stretch h-full min-h-0">
-            
+
             {/* LEFT COLUMN: Logo Box + Signin/Signup Buttons */}
             <div className="lg:col-span-6 flex flex-col justify-between space-y-3 min-h-0 h-full">
-              
+
               {/* LARGE LOGO CARD (Matching Wireframe Left Box) */}
               <div className="relative flex-1 group border border-zinc-800/70 bg-zinc-900/30 hover:bg-zinc-900/50 backdrop-blur-sm rounded-xl md:rounded-2xl p-4 md:p-6 flex flex-col justify-between transition-all duration-300 hover:border-sky-500/40 hover:shadow-[0_0_30px_rgba(56,189,248,0.12)] overflow-hidden min-h-0">
-                
+
                 {/* Background Grid Pattern inside Logo Card */}
                 <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
 
@@ -120,7 +120,7 @@ export default function Home() {
                       <span>Signin</span>
                     </button>
                   </SignInButton>
-                  
+
                   <SignUpButton mode="modal">
                     <button className="w-full py-3 md:py-3.5 px-4 rounded-xl font-semibold text-sm border border-zinc-700 bg-zinc-900/60 hover:bg-zinc-800/80 text-zinc-100 transition-all duration-200 shadow-md active:scale-[0.98] cursor-pointer flex items-center justify-center gap-2">
                       <span>Signup</span>
@@ -142,7 +142,7 @@ export default function Home() {
 
             {/* RIGHT COLUMN: 3 STACKED CARDS WITH CLEAN HEADING AND CONTENT */}
             <div className="lg:col-span-6 flex flex-col justify-between space-y-3 min-h-0 h-full">
-              
+
               {/* CARD 1 */}
               <div className="flex-1 group relative border border-zinc-800/70 bg-zinc-900/30 hover:bg-zinc-900/50 backdrop-blur-sm rounded-xl md:rounded-2xl p-3.5 md:p-4 transition-all duration-300 hover:border-sky-500/40 shadow-lg flex flex-col justify-center min-h-0">
                 <div className="flex items-start gap-3 md:gap-4">
@@ -161,11 +161,6 @@ export default function Home() {
                     <p className="text-[11px] md:text-xs text-zinc-300 mt-1.5 leading-snug">
                       Eliminates 80%+ of manual test writing time by automatically parsing code AST to generate Jest, Vitest, and Playwright test suites.
                     </p>
-                    <div className="mt-2.5 flex items-center gap-1.5 text-[10px] font-mono text-zinc-400">
-                      <span className="px-2 py-0.5 rounded bg-zinc-900/80 text-sky-300 border border-zinc-800">80% Time Saved</span>
-                      <span className="px-2 py-0.5 rounded bg-zinc-900/80 text-emerald-300 border border-zinc-800">Zero Regressions</span>
-                      <span className="px-2 py-0.5 rounded bg-zinc-900/80 text-amber-300 border border-zinc-800">AST Parser</span>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -188,11 +183,6 @@ export default function Home() {
                     <p className="text-[11px] md:text-xs text-zinc-300 mt-1.5 leading-snug">
                       Automatically runs test checks on incoming GitHub PRs, blocking untested or breaking API changes from ever merging into production.
                     </p>
-                    <div className="mt-2.5 flex items-center gap-1.5 text-[10px] font-mono text-zinc-400">
-                      <span className="px-2 py-0.5 rounded bg-zinc-900/80 text-amber-300 border border-zinc-800">GitHub Webhooks</span>
-                      <span className="px-2 py-0.5 rounded bg-zinc-900/80 text-sky-300 border border-zinc-800">PR Protection</span>
-                      <span className="px-2 py-0.5 rounded bg-zinc-900/80 text-emerald-300 border border-zinc-800">100% Reliable Merges</span>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -215,11 +205,6 @@ export default function Home() {
                     <p className="text-[11px] md:text-xs text-zinc-300 mt-1.5 leading-snug">
                       Provides transparent usage credit tracking with Neon Postgres &amp; Stripe Checkout, giving dev teams 100 onboarding credits &amp; flexible top-ups.
                     </p>
-                    <div className="mt-2.5 flex items-center gap-1.5 text-[10px] font-mono text-zinc-400">
-                      <span className="px-2 py-0.5 rounded bg-zinc-900/80 text-emerald-300 border border-zinc-800">100 Free Credits</span>
-                      <span className="px-2 py-0.5 rounded bg-zinc-900/80 text-amber-300 border border-zinc-800">Stripe Billing</span>
-                      <span className="px-2 py-0.5 rounded bg-zinc-900/80 text-sky-300 border border-zinc-800">Serverless Postgres</span>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -237,7 +222,7 @@ export default function Home() {
             <Link href="/workspace" className="hover:text-zinc-200 transition-colors">
               Workspace
             </Link>
-            <Link href="#pricing" className="hover:text-zinc-200 transition-colors">
+            <Link href="/pricing" className="hover:text-zinc-200 transition-colors">
               Pricing
             </Link>
             <Link href="https://github.com/OmUmale19/AI-Testing-Automation-Agent" target="_blank" className="hover:text-zinc-200 transition-colors">
