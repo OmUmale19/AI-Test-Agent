@@ -29,10 +29,13 @@ import {
     ListTodo,
     XCircle,
     TrendingUp,
-    Loader2
+    Loader2,
+    Boxes,
+    Network
 } from 'lucide-react';
 import EmptyWorkspace from './emptyworkspace';
 import AddRepoModal from './addrepomodal';
+import RepoArchitecture from './repo-architecture';
 
 interface GitHubUser {
     login: string;
@@ -88,7 +91,7 @@ function WorkspaceBody() {
     const [isAddModalOpen, setIsAddModalOpen] = useState<boolean>(false);
     const [savingRepoName, setSavingRepoName] = useState<string | null>(null);
     const [toastMessage, setToastMessage] = useState<{ text: string; type: 'success' | 'error' } | null>(null);
-    const [activeTabSubView, setActiveTabSubView] = useState<'overview' | 'tests' | 'settings'>('tests');
+    const [activeTabSubView, setActiveTabSubView] = useState<'overview' | 'tests' | 'diagram'>('tests');
 
     // Test Automation State Variables
     const [totalTests, setTotalTests] = useState<number>(0);
@@ -544,11 +547,11 @@ function WorkspaceBody() {
                     </div>
 
                     {/* Workbench Tabs */}
-                    <div className="flex items-center gap-2 border-b border-zinc-800 pb-3 mb-6">
+                    <div className="flex items-center gap-2 border-b border-zinc-800 pb-3 mb-6 flex-wrap">
                         <button
                             onClick={() => setActiveTabSubView('overview')}
                             className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all cursor-pointer ${activeTabSubView === 'overview'
-                                ? 'bg-sky-500 text-black'
+                                ? 'bg-sky-500 text-black shadow-md'
                                 : 'bg-zinc-800/80 text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800'
                                 }`}
                         >
@@ -557,11 +560,21 @@ function WorkspaceBody() {
                         <button
                             onClick={() => setActiveTabSubView('tests')}
                             className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all cursor-pointer ${activeTabSubView === 'tests'
-                                ? 'bg-sky-500 text-black'
+                                ? 'bg-sky-500 text-black shadow-md'
                                 : 'bg-zinc-800/80 text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800'
                                 }`}
                         >
                             AI Test Automation
+                        </button>
+                        <button
+                            onClick={() => setActiveTabSubView('diagram')}
+                            className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${activeTabSubView === 'diagram'
+                                ? 'bg-emerald-500 text-black font-bold shadow-md'
+                                : 'bg-zinc-800/80 text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800'
+                                }`}
+                        >
+                            <Boxes className="w-3.5 h-3.5" />
+                            <span>Architecture Diagram</span>
                         </button>
                     </div>
 
@@ -839,6 +852,11 @@ function WorkspaceBody() {
                                 )}
                             </div>
                         </div>
+                    )}
+
+                    {/* Tab 3: Architecture Diagram */}
+                    {activeTabSubView === 'diagram' && (
+                        <RepoArchitecture repo={selectedDbRepo} githubToken={token} />
                     )}
                 </div>
             ) : (
