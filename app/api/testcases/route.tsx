@@ -25,6 +25,31 @@ export async function GET(req: NextRequest) {
     }
 }
 
+export async function PATCH(req: NextRequest) {
+    try {
+        const body = await req.json();
+        const { id, ...updateData } = body;
+        if (!id) {
+            return NextResponse.json({ error: "Test case ID required" }, { status: 400 });
+        }
+
+        const updated = await db
+            .update(TestCasesTable)
+            .set(updateData)
+            .where(eq(TestCasesTable.id, Number(id)))
+            .returning();
+
+        if (!updated || updated.length === 0) {
+            return NextResponse.json({ error: "Test case not found" }, { status: 404 });
+        }
+
+        return NextResponse.json({ success: true, message: "Test case updated successfully", testCase: updated[0] });
+    } catch (error: any) {
+        console.error("Error updating test case:", error);
+        return NextResponse.json({ error: error.message || "Failed to update test case" }, { status: 500 });
+    }
+}
+
 export async function DELETE(req: NextRequest) {
     try {
         const id = req.nextUrl.searchParams.get("id");

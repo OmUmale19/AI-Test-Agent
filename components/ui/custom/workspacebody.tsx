@@ -36,6 +36,7 @@ import {
 import EmptyWorkspace from './emptyworkspace';
 import AddRepoModal from './addrepomodal';
 import RepoArchitecture from './repo-architecture';
+import TestCaseSetting from './testcasesetting';
 
 interface GitHubUser {
     login: string;
@@ -1126,77 +1127,41 @@ function WorkspaceBody() {
                 </>
             )}
 
-            {/* Test Case Specification Details Modal */}
-            {activeDetailsTest && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-in fade-in duration-200">
-                    <div className="bg-zinc-900 border border-zinc-800 rounded-2xl max-w-lg w-full p-6 shadow-2xl space-y-4">
-                        <div className="flex items-start justify-between gap-3 border-b border-zinc-800 pb-3">
-                            <div>
-                                <span className="text-[10px] font-mono uppercase font-bold text-emerald-400">Test Case Specification</span>
-                                <h4 className="text-base font-bold text-zinc-100 mt-0.5">{activeDetailsTest.title}</h4>
-                            </div>
-                            <button
-                                onClick={() => setActiveDetailsTest(null)}
-                                className="p-1.5 text-zinc-400 hover:text-white hover:bg-zinc-800 rounded-lg transition-all cursor-pointer"
-                            >
-                                <XCircle className="w-5 h-5" />
-                            </button>
-                        </div>
-
-                        <p className="text-xs text-zinc-300 leading-relaxed">
-                            {activeDetailsTest.description}
-                        </p>
-
-                        <div className="grid grid-cols-2 gap-3 text-xs">
-                            <div className="bg-zinc-950 p-3 rounded-xl border border-zinc-800/80">
-                                <span className="text-[10px] font-mono uppercase text-zinc-500 block mb-1">Type & Priority</span>
-                                <div className="flex items-center gap-2">
-                                    <span className="px-2 py-0.5 rounded-full text-[10px] font-mono uppercase font-bold bg-zinc-800 text-zinc-200 border border-zinc-700">
-                                        {activeDetailsTest.type}
-                                    </span>
-                                    <span className="px-2 py-0.5 rounded-full text-[10px] font-mono uppercase font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
-                                        {activeDetailsTest.priority}
-                                    </span>
-                                </div>
-                            </div>
-
-                            <div className="bg-zinc-950 p-3 rounded-xl border border-zinc-800/80">
-                                <span className="text-[10px] font-mono uppercase text-zinc-500 block mb-1">Target Route</span>
-                                <span className="font-mono text-sky-300">{activeDetailsTest.targetRoute || '/'}</span>
-                            </div>
-                        </div>
-
-                        {activeDetailsTest.expectedResult && (
-                            <div className="bg-zinc-950 p-3.5 rounded-xl border border-zinc-800/80 text-xs space-y-1">
-                                <span className="text-[10px] font-mono uppercase font-bold text-zinc-500 block">Expected Result</span>
-                                <p className="text-zinc-300">{activeDetailsTest.expectedResult}</p>
-                            </div>
-                        )}
-
-                        {Array.isArray(activeDetailsTest.targetFiles) && activeDetailsTest.targetFiles.length > 0 && (
-                            <div className="bg-zinc-950 p-3 rounded-xl border border-zinc-800/80 text-xs space-y-1.5">
-                                <span className="text-[10px] font-mono uppercase font-bold text-zinc-500 block">Target Files</span>
-                                <div className="flex flex-wrap gap-1.5 font-mono text-[11px]">
-                                    {activeDetailsTest.targetFiles.map((file: string, fIdx: number) => (
-                                        <span key={fIdx} className="px-2 py-0.5 rounded-md bg-zinc-900 border border-zinc-800 text-zinc-300">
-                                            {file}
-                                        </span>
-                                    ))}
-                                </div>
-                            </div>
-                        )}
-
-                        <div className="flex justify-end pt-2">
-                            <button
-                                onClick={() => setActiveDetailsTest(null)}
-                                className="px-4 py-2 rounded-xl text-xs font-semibold bg-zinc-800 hover:bg-zinc-700 text-zinc-200 transition-all cursor-pointer"
-                            >
-                                Close
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            )}
+            {/* Test Case Specification & Settings Dialog */}
+            <TestCaseSetting
+                isOpen={!!activeDetailsTest}
+                onClose={() => setActiveDetailsTest(null)}
+                testCase={activeDetailsTest}
+                onUpdateTestCase={(updatedTest) => {
+                    setTestCasesList((prev) =>
+                        prev.map((t) =>
+                            (t.id && updatedTest.id && t.id === updatedTest.id) || t.title === updatedTest.title
+                                ? updatedTest
+                                : t
+                        )
+                    );
+                    setActiveDetailsTest(updatedTest);
+                    showToast("Test case updated successfully", "success");
+                }}
+                onDeleteTestCase={(deletedId) => {
+                    setTestCasesList((prev) => prev.filter((t) => t.id !== deletedId));
+                    setSelectedTestIds((prev) => prev.filter((id) => id !== deletedId));
+                    setTotalTests((prev) => Math.max(0, prev - 1));
+                    setActiveDetailsTest(null);
+                    showToast("Test case deleted", "success");
+                }}
+                onRunTest={(test) => {
+                    setTestCasesList((prev) =>
+                        prev.map((t) =>
+                            (t.id && test.id && t.id === test.id) || t.title === test.title
+                                ? { ...t, status: "passed" }
+                                : t
+                        )
+                    );
+                    setPassedTests((prev) => prev + 1);
+                    showToast(`🚀 Test "${test.title}" executed successfully!`, "success");
+                }}
+            />
         </div>
     );
 }

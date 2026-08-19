@@ -1,9 +1,7 @@
 import type { NextConfig } from "next";
-import path from "path";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  outputFileTracingRoot: path.join(__dirname),
   images: {
     remotePatterns: [
       {
@@ -11,6 +9,15 @@ const nextConfig: NextConfig = {
         hostname: "avatars.githubusercontent.com",
       },
     ],
+  },
+  webpack: (config, { dev }) => {
+    if (dev) {
+      // Use in-memory cache during development on Windows to prevent .pack.gz ENOENT errors
+      config.cache = {
+        type: 'memory',
+      };
+    }
+    return config;
   },
 };
 
